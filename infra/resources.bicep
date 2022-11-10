@@ -4,6 +4,8 @@ param resourceToken string
 param tags object
 
 
+
+
 @description('The name of the function app that you wish to create.')
 param appName string = 'fnapp${uniqueString(resourceGroup().id)}'
 
@@ -51,12 +53,15 @@ resource hostingPlan 'Microsoft.Web/serverfarms@2022-03-01' = {
 }
 
 resource functionApp 'Microsoft.Web/sites@2022-03-01' = {
-  name: 'serverlessresumeapiapi'
+  name: functionAppName
   location: location
   kind: 'functionapp,linux'
   identity: {
     type: 'SystemAssigned'
   }
+  tags: union(tags, {
+    'azd-service-name': 'api'
+    }) 
   properties: {
     
     serverFarmId: hostingPlan.id
