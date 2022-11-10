@@ -4,7 +4,7 @@ param resourceToken string
 param tags object
 
 @description('The name of the function app that you wish to create.')
-param appName string = 'madebygps'
+param appName string = 'fnapp${uniqueString(resourceGroup().id)}'
 
 @description('Storage Account type')
 @allowed([
