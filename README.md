@@ -1,5 +1,7 @@
 # Your Resume API on Azure Serverless
 
+
+
 ## Provision required resources
 
 1. Create a [resource group](https://learn.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group)
@@ -25,8 +27,13 @@
     ```sh
     az storage blob upload --account-name <storage-account-name> --container-name resume --name myresume.json --file myresume.json 
     ```
+5. In your `local.settings.json` add the Storage Account Connection String to the `AzureWebJobsStorage` value.
 
-## Deploy Function to Azure
+6. You can now run and debug your Function in your environment
+
+## Manually Deploy Function to Azure from VS Code
+
+I prefer to use DevOps practices to deploy functions (GitHub Actions) instead of manually deploying each time. Here are instructions in case you do want to use VS Code.
 
 1. `Ctrl + Shift + P` and search for Run Task
 2. Select `build (Functions)`
@@ -45,6 +52,9 @@
 
 ## Configure CI/CD with GitHub actions
 
-1. In the Azure Portal, find your Function, and download the publish profile.
+1. We'll need to get our Function's Publish Profile, run:
+    ```sh
+    az functionapp deployment list-publishing-profiles --name {function-name} --resource-group {resource-group} --xml
+    ```
 2. In your GitHub repo, create a secret named `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` with the contents of your publish profile.
 3. Head to Actions tab on your Repo and manually run the workflow. 

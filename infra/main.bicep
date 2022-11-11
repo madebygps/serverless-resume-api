@@ -2,7 +2,7 @@ targetScope = 'subscription'
 
 @minLength(1)
 @description('Primary location for all resources')
-param location string = 'eastus2'
+param location string
 
 
 resource resourceGroup 'Microsoft.Resources/resourceGroups@2020-06-01' = {
