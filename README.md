@@ -45,4 +45,6 @@
 
 ## Configure CI/CD with GitHub actions
 
-1. 
+1. In the Azure Portal, find your Function, and download the publish profile.
+2. In your GitHub repo, create a secret named `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` with the contents of your publish profile.
+3. Head to Actions tab on your Repo and manually run the workflow. 
