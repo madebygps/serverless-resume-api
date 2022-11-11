@@ -44,6 +44,9 @@
 				"/property:GenerateFullPaths=true",
 				"/consoleloggerparameters:NoSummary"
 			],
+			"options": {
+				"cwd": "${workspaceFolder}/src/"
+			},
 			"type": "process",
 			"problemMatcher": "$msCompile"
 		},
@@ -57,6 +60,9 @@
 				"/property:GenerateFullPaths=true",
 				"/consoleloggerparameters:NoSummary"
 			],
+			"options": {
+				"cwd": "${workspaceFolder}/src/"
+			},
 			"type": "process",
 			"dependsOn": "clean release (functions)",
 			"problemMatcher": "$msCompile"
