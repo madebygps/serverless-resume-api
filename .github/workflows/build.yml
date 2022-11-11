@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 env:
-  AZURE_FUNCTIONAPP_NAME: "serverlessresumeapi"
+  AZURE_FUNCTIONAPP_NAME: serverlessresumeapi
   AZURE_FUNCTIONAPP_PACKAGE_PATH: "src" # set this to the path to your function app project, defaults to the repository root
   DOTNET_VERSION: "6.0"
 
