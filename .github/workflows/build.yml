@@ -5,16 +5,16 @@ on:
     branches: [main]
 
 env:
-  AZURE_FUNCTIONAPP_NAME: serverlessresumeapi
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: "src" # set this to the path to your function app project, defaults to the repository root
-  DOTNET_VERSION: "6.0"
+  AZURE_FUNCTIONAPP_NAME: 'serverlessresumeapi'
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'src' # set this to the path to your function app project, defaults to the repository root
+  DOTNET_VERSION: '6.0'
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     environment: dev
     steps:
-      - name: "Checkout GitHub Action"
+      - name: 'Checkout GitHub Action'
         uses: actions/checkout@v3
 
       - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
@@ -22,16 +22,16 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: "Resolve Project Dependencies Using Dotnet"
+      - name: 'Resolve Project Dependencies Using Dotnet'
         shell: bash
         run: |
-          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/'
           dotnet build --configuration Release --output ./output
           popd
-      - name: "Run Azure Functions Action"
+      - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
         id: fa
         with:
           app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-          package: "${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output"
+          package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
