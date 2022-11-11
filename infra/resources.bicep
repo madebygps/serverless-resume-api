@@ -1,10 +1,7 @@
 param location string
-param principalId string = ''
-param resourceToken string
-param tags object
 
 @description('The name of the function app that you wish to create.')
-param appName string = 'fnapp${uniqueString(resourceGroup().id)}'
+param appName string = 'serverlessresumeapi'
 
 @description('Storage Account type')
 @allowed([
@@ -56,9 +53,6 @@ resource functionApp 'Microsoft.Web/sites@2022-03-01' = {
   identity: {
     type: 'SystemAssigned'
   }
-  tags: union(tags, {
-    'azd-service-name': 'api'
-    }) 
   properties: {
     
     serverFarmId: hostingPlan.id
