@@ -12,6 +12,12 @@ Create an [API](https://learn.microsoft.com/training/modules/build-api-azure-fun
 - GitHub Codespaces as our development environment. 
 - Bicep for our Infrastructure as Code.
 
+## You'll need
+
+- Azure account
+- GitHub account
+- I've provided a sample .json file based on the [Json resume](https://jsonresume.org/schema/)
+
 > **NOTE**
 > We'll be using GitHub Codespaces ofr our development environment. At the moment, GitHub Free for personal accounts comes with 15 GB of Codespaces storage and 120 Core hours per month. Read more about [pricing here](https://docs.github.com/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces)
 
