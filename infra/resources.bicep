@@ -1,7 +1,7 @@
 param location string
 
 @description('The name of the function app that you wish to create.')
-param appName string = 'serverlessresumeapi'
+param appName string = '${uniqueString(resourceGroup().id)}api'
 
 @description('Storage Account type')
 @allowed([
@@ -19,10 +19,10 @@ param storageAccountType string = 'Standard_LRS'
 ])
 param runtime string = 'dotnet-isolated'
 
-var functionAppName = appName
-var hostingPlanName = appName
-var applicationInsightsName = appName
-var storageAccountName = '${uniqueString(resourceGroup().id)}azfunctions'
+var functionAppName = '${appName}func'
+var hostingPlanName = '${appName}plan'
+var applicationInsightsName = '${appName}insights'
+var storageAccountName = '${uniqueString(resourceGroup().id)}storage'
 var functionWorkerRuntime = runtime
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = {
