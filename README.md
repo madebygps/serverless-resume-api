@@ -37,9 +37,11 @@ Create an [API](https://learn.microsoft.com/training/modules/build-api-azure-fun
 
 ### Provision resources in Azure
 
+> **NOTE:** I've set the resource group name to be `rg-serverlessresumeapi`
+
 1. I've provided Infrastructure as Code (IaC) files, you can find them in the `infra` folder. Now we need to use those files to create a deployment in Azure, in the Terminal, type: 
     ```sh
-    az deployment sub create --template-file ./infra/main.bicep> -l <your-region>   
+    az deployment sub create --template-file ./infra/main.bicep -l <your-region>   
     ```
 2. Upload `myresume.json` to that newly created blob container. 
     > **Note**
