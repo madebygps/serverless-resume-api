@@ -12,56 +12,40 @@ Create an [API](https://learn.microsoft.com/training/modules/build-api-azure-fun
 - GitHub Codespaces as our development environment. 
 - Bicep for our Infrastructure as Code.
 
+> **NOTE**
+> We'll be using GitHub Codespaces ofr our development environment. At the moment, GitHub Free for personal accounts comes with 15 GB of Codespaces storage and 120 Core hours per month. Read more about [pricing here](https://docs.github.com/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces)
+
 ## How to get started
 
+### Get the code and environment
+
 1. [Fork the repository](https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks) so you can have your own copy of it. 
-## Provision required resources
+2. Click on the `Code` button, click on `Codespaces` tab, and click on `Create Codespaces on main`. I've provided a [`devcontainer.json`](https://code.visualstudio.com/docs/devcontainers/create-dev-container) file with the configuration needed for this project.
+3. Once your Codespace has loaded, in the Explorer, expand the `src` folder and rename `local.settings.sample.json` to `local.settings.json`
+### Authenticate your Environment with Azure
+1. In the Terminal, type `az login --use-device-code` to log into your Azure account from the az cli in your Codespace.
+2. In the Terminal, type `az account list --output table` to get a list of Azure subscriptions you have available to you and make note of the name you want to use. 
+3. In the Terminal, type `az account set --name "name-of-subscription"` with the name of the subscription you want to use.
+4. In the Terminal, type `az account show` and make sure it's set to the subscription you want to work in.
 
-1. Create a [resource group](https://learn.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group)
-    ``` sh
-    az group create --name <resource-group-name> --location <your-region>
-    ```
+### Provision resources in Azure
 
-2. Create a deployment
+1. I've provided Infrastructure as Code files, you can find them in the `infra` folder. Now we need to use those files to create a deployment in Azure, in the Terminal, type: 
     ```sh
     az deployment sub create --template-file <>.\infra\main.bicep> -l <your-region>   
     ```
-
-3. In your newly created storage account, create a [blob container](https://learn.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) called `resume`
-
+ 2. Upload `myresume.json` to that newly created blob container. 
     > **Note**
     > To find your storage account name, you can use:
     > `az storage account list --resource-group <resource-group> --query "[].{Name:name}"`
     ```sh
-    az storage container create --account-name <storage-account-name> --name resume
-    ```
-
- 4. Upload `myresume.json` to that newly created blob container. 
-    ```sh
     az storage blob upload --account-name <storage-account-name> --container-name resume --name myresume.json --file myresume.json 
     ```
-5. In your `local.settings.json` add the Storage Account Connection String to the `AzureWebJobsStorage` value.
-
+5. In your `local.settings.json` add the Storage Account Connection String to the `AzureWebJobsStorage` value. You can get that value by running this command: 
+    ```sh
+    az storage account show-connection-string --name MyStorageAccount --resource-group MyResourceGroup --subscription MySubscription   
+    ```
 6. You can now run and debug your Function in your environment
-
-## Manually Deploy Function to Azure from VS Code
-
-I prefer to use DevOps practices to deploy functions (GitHub Actions) instead of manually deploying each time. Here are instructions in case you do want to use VS Code.
-
-1. `Ctrl + Shift + P` and search for Run Task
-2. Select `build (Functions)`
-3. `Ctrl + Shift + P` and search for Run Task
-4. Select `publish (Functions)`
-5. Right click on publish in src > bin > Release > net6.0 and select Deploy to Function App
-6. Select the subscription you've been working in.
-7. Select the Function App you recently provisioned in step 2
-
-    > Note:
-    > To find your Function App name, use:
-    `az functionapp list --resource-group <resource-group> --query "[].{Name:name}"`
-
-12. View output tab to get Function URL.
-13. Resume should be displayed there.
 
 ## Configure CI/CD with GitHub actions
 

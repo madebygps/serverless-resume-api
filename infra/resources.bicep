@@ -32,6 +32,19 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = {
     name: storageAccountType
   }
   kind: 'Storage'
+  
+}
+
+resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2021-06-01' = {
+  name: 'default'
+  parent: storageAccount
+}
+
+
+// Create container
+resource share 'Microsoft.Storage/storageAccounts/blobServices/containers@2021-02-01' = {
+  name: 'resume'
+  parent: blobService
 }
 
 resource hostingPlan 'Microsoft.Web/serverfarms@2022-03-01' = {
