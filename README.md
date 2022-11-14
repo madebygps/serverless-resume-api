@@ -1,7 +1,20 @@
 # Your Resume API on Azure Serverless
 
+Create an [API](https://learn.microsoft.com/training/modules/build-api-azure-functions/3-overview-api) with Azure Function that displays your resume information in json. 
 
+![diagram](diagram.png)
 
+- GitHub for Version control.
+- GitHub Actions for CI/CD pipeline.
+- Azure Functions to deploy our API.
+- Azure Blob Storage to store our resume.
+- .NET 6 as our programming framework for our API.
+- GitHub Codespaces as our development environment. 
+- Bicep for our Infrastructure as Code.
+
+## How to get started
+
+1. [Fork the repository](https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks) so you can have your own copy of it. 
 ## Provision required resources
 
 1. Create a [resource group](https://learn.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group)
