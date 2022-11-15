@@ -53,7 +53,7 @@ Create an [API](https://learn.microsoft.com/training/modules/build-api-azure-fun
     ```
 3. In your `local.settings.json` add the Storage Account Connection String to the `AzureWebJobsStorage` value. You can get that value by running this command: 
     ```sh
-    az storage account show-connection-string --name MyStorageAccount --resource-group MyResourceGroup --subscription MySubscription   
+    az storage account show-connection-string --name MyStorageAccount --resource-group MyResourceGroup   
     ```
 6. You can now run and debug (F5) your Function in your environment
 
