@@ -1,6 +1,7 @@
 name: Deploy .NET isolated Azure Function App
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
 
