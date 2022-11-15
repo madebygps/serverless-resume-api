@@ -43,10 +43,11 @@ Create an [API](https://learn.microsoft.com/training/modules/build-api-azure-fun
     ```sh
     az deployment sub create --template-file ./infra/main.bicep -l <your-region>   
     ```
+2. In the Terminal, run the following command to get the values for your storage account name and function app name:
+    ```sh
+    az deployment group show -g rg-serverlessresumeapi -n resources --query properties.outputs 
+    ```
 2. Upload `myresume.json` to that newly created blob container. 
-    > **Note**
-    > To find your storage account name, you can use:
-    > `az storage account list --resource-group <resource-group> --query "[].{Name:name}"`
     ```sh
     az storage blob upload --account-name <storage-account-name> --container-name resume --name myresume.json --file myresume.json 
     ```
@@ -58,10 +59,6 @@ Create an [API](https://learn.microsoft.com/training/modules/build-api-azure-fun
 
 ## Configure CI/CD with GitHub actions
 
-1. In the terminal, run this command to get our Azure Function name
-    ```sh
-    az functionapp list -g <resource-group> -o table
-    ```
 1. We'll need to get our Function's Publish Profile, run:
     ```sh
     az functionapp deployment list-publishing-profiles --name {function-name} --resource-group {resource-group} --xml

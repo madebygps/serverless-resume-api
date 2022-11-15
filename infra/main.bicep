@@ -19,5 +19,6 @@ module resources './resources.bicep' = {
     }
 }
 
-output APP_WEB_BASE_URL string = resources.outputs.uri
-output AZURE_LOCATION string = location
+output APP_WEB_BASE_URL string = resources.outputs.functionUri
+output FUNCTION_APP_NAME string = resources.outputs.functionAppName
+output STORAGE_ACCOUNT_NAME string = resources.outputs.storageAccountName

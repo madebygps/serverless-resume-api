@@ -106,4 +106,6 @@ resource applicationInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 }
 
-output uri string = 'https://${functionApp.properties.defaultHostName}'
+output functionUri string = 'https://${functionApp.properties.defaultHostName}'
+output storageAccountName string = storageAccountName
+output functionAppName string = functionAppName
