@@ -5,12 +5,12 @@ Create an [API](https://learn.microsoft.com/training/modules/build-api-azure-fun
 ![diagram](diagram.png)
 
 - GitHub for Version control.
-- GitHub Actions for CI/CD pipeline.
-- Azure Functions to deploy our API.
+- [GitHub Actions](https://docs.github.com/en/actions) for CI/CD pipeline.
+- [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview) to deploy our API.
 - Azure Blob Storage to store our resume.
 - .NET 6 as our programming framework for our API.
-- GitHub Codespaces as our development environment. 
-- Bicep for our Infrastructure as Code.
+- Optional: [GitHub Codespaces](https://docs.github.com/en/codespaces/overview) as our development environment. 
+- [Bicep](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview?tabs=bicep) for our Infrastructure as Code.
 
 ## You'll need
 
@@ -22,7 +22,7 @@ For local developer environment
 
 - VS Code
 - Docker
-- VS Code Dev Container Extension
+- [VS Code Dev Container Extension](https://code.visualstudio.com/docs/devcontainers/tutorials)
 
 > **NOTE**
 > At the moment, GitHub Free for personal accounts comes with 15 GB of Codespaces storage and 120 Core hours per month. Read more about [pricing here](https://docs.github.com/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces)
