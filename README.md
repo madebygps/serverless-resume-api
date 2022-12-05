@@ -18,16 +18,23 @@ Create an [API](https://learn.microsoft.com/training/modules/build-api-azure-fun
 - GitHub account
 - I've provided a sample .json file based on the [Json resume](https://jsonresume.org/schema/)
 
+For local developer environment
+
+- VS Code
+- Docker
+- VS Code Dev Container Extension
+
 > **NOTE**
-> We'll be using GitHub Codespaces for our development environment. At the moment, GitHub Free for personal accounts comes with 15 GB of Codespaces storage and 120 Core hours per month. Read more about [pricing here](https://docs.github.com/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces)
+> At the moment, GitHub Free for personal accounts comes with 15 GB of Codespaces storage and 120 Core hours per month. Read more about [pricing here](https://docs.github.com/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces)
 
 ## How to get started
 
 ### Get the code and environment
 
 1. [Fork the repository](https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks) so you can have your own copy of it. 
-2. Click on the `Code` button, click on `Codespaces` tab, and click on `Create Codespaces on main`. I've provided a [`devcontainer.json`](https://code.visualstudio.com/docs/devcontainers/create-dev-container) file with the configuration needed for this project.
+2. FOR CLOUDSPACES: Click on the `Code` button, click on `Codespaces` tab, and click on `Create Codespaces on main`. I've provided a [`devcontainer.json`](https://code.visualstudio.com/docs/devcontainers/create-dev-container) file with the configuration needed for this project.
 3. Once your Codespace has loaded, in the Explorer, expand the `src` folder and rename `local.settings.sample.json` to `local.settings.json`
+4. FOR LOCAL DEV: Clone the code, open it with VS Code and Launch in the dev container. More info [here](https://code.visualstudio.com/docs/devcontainers/containers)
 
 ### Authenticate your Environment with Azure
 1. In the Terminal, type `az login --use-device-code` to log into your Azure account from the az cli in your Codespace.
