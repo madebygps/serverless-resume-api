@@ -53,7 +53,7 @@ Create an [API](https://learn.microsoft.com/training/modules/build-api-azure-fun
     ```
 3. In your `local.settings.json` add the Storage Account Connection String to the `AzureWebJobsStorage` value. You can get that value by running this command: 
     ```sh
-    az storage account show-connection-string --name MyStorageAccount --resource-group MyResourceGroup   
+    az storage account show-connection-string --name MyStorageAccount --resource-group rg-serverlessresumeapi   
     ```
 6. You can now run and debug (F5) your Function in your environment
 
@@ -61,7 +61,7 @@ Create an [API](https://learn.microsoft.com/training/modules/build-api-azure-fun
 
 1. We'll need to get our Function's Publish Profile, run:
     ```sh
-    az functionapp deployment list-publishing-profiles --name {function-name} --resource-group {resource-group} --xml
+    az functionapp deployment list-publishing-profiles --name {function-name} --resource-group rg-serverlessresumeapi --xml
     ```
 2. In your GitHub repo, create a secret named `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` with the contents of your publish profile.
 3. Head to Actions tab on your Repo and manually run the workflow. 
