@@ -22,10 +22,10 @@ Para el entorno de desarrollo local
 
 - VS Code
 - Docker
-- [Extensión de contenedor de desarrollo de VS Code] (https://code.visualstudio.com/docs/devcontainers/tutorials)
+- [Extensión de contenedor de desarrollo de VS Code](https://code.visualstudio.com/docs/devcontainers/tutorials)
 
 > **NOTA**
-> Por el momento, GitHub Free para cuentas personales viene con 15 GB de almacenamiento de Codespaces y 120 horas Core por mes. Obtenga más información sobre [precios aquí] (https://docs.github.com/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces)
+> Por el momento, GitHub Free para cuentas personales viene con 15 GB de almacenamiento de Codespaces y 120 horas Core por mes. Obtenga más información sobre [precios aquí](https://docs.github.com/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces)
 
 ## Cómo empezar
 
