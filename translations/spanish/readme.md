@@ -53,7 +53,7 @@ Para el entorno de desarrollo local
 
 2. En la Terminal, ejecute el siguiente comando para obtener los valores para el nombre de su cuenta de almacenamiento y el nombre de la aplicación de función:
     ```sh
-    az deployment group show -g rg-serverlessresumeapi -n recursos --query properties.outputs
+    az deployment group show -g rg-serverlessresumeapi -n resources --query properties.outputs
     ```
 2. Cargue `myresume.json` en ese contenedor de blobs recién creado.
     ```sh
@@ -61,7 +61,7 @@ Para el entorno de desarrollo local
     ```
 3. En su `local.settings.json` agregue la cadena de conexión de la cuenta de almacenamiento al valor `AzureWebJobsStorage`. Puede obtener ese valor ejecutando este comando:
     ```sh
-    cuenta de almacenamiento az show-connection-string --name MyStorageAccount --resource-group rg-serverlessresumeapi
+    az storage account show-connection-string --name MyStorageAccount --resource-group rg-serverlessresumeapi
     ```
 6. Ahora puede ejecutar y depurar (F5) su función en su entorno
 
