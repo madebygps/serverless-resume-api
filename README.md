@@ -2,6 +2,8 @@
 
 Create an [API](https://learn.microsoft.com/training/modules/build-api-azure-functions/3-overview-api) with Azure Function that displays your resume information in json. 
 
+## Architecture 
+
 ![diagram](diagram.png)
 
 - GitHub for Version control.
