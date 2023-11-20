@@ -1,6 +1,7 @@
 # Find the Dockerfile at this URL
-# https://github.com/Azure/azure-functions-docker/blob/dev/host/4/bullseye/amd64/dotnet/dotnet-isolated/dotnet-isolated-core-tools.Dockerfile
-FROM mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated6.0-core-tools
+
+FROM mcr.microsoft.com/devcontainers/dotnet:8.0-bookworm
+
 
 # Uncomment following lines If you want to enable Development Container Script
 # For more details https://github.com/microsoft/vscode-dev-containers/tree/main/script-library

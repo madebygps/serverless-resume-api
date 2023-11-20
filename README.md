@@ -16,8 +16,8 @@ Create an [API](https://learn.microsoft.com/training/modules/build-api-azure-fun
 
 ## You'll need
 
-- Azure account
-- GitHub account
+- [Azure account](azure.com/free)
+- [GitHub account](github.com/join)
 - I've provided a sample .json file based on the [Json resume](https://jsonresume.org/schema/)
 
 For local developer environment
@@ -52,26 +52,53 @@ For local developer environment
     ```sh
     az deployment sub create --template-file ./infra/main.bicep -l <your-region>   
     ```
-2. In the Terminal, run the following command to get the values for your storage account name and function app name:
+2. In the Terminal, run the following command to see the values for your storage account name and function:
     ```sh
     az deployment group show -g rg-serverlessresumeapi -n resources --query properties.outputs 
     ```
-2. Upload `myresume.json` to that newly created blob container. 
+3. Now let's save that output into individual variables. Run the Azure CLI command and capture the output:
     ```sh
-    az storage blob upload --account-name <storage-account-name> --container-name resume --name myresume.json --file myresume.json 
+    output=$(az deployment group show -g rg-serverlessresumeapi -n resources --query properties.outputs)
     ```
-3. In your `local.settings.json` add the Storage Account Connection String to the `AzureWebJobsStorage` value. You can get that value by running this command: 
+4. Since the output has several values, we need to arse the output and store each value in a variable
     ```sh
-    az storage account show-connection-string --name MyStorageAccount --resource-group rg-serverlessresumeapi   
+    functionAppName=$(echo $output | jq -r '.functionAppName.value')
+    functionUri=$(echo $output | jq -r '.functionUri.value')
+    storageAccountName=$(echo $output | jq -r '.storageAccountName.value')
     ```
-6. You can now run and debug (F5) your Function in your environment
+5. Now we can Echo (print to screen) the variables to verify
+    ```sh
+    echo "Function App Name: $functionAppName"
+    echo "Function URI: $functionUri"
+    echo "Storage Account Name: $storageAccountName"
+    ```
+6. Upload `myresume.json` to that newly created blob container. 
+    ```sh
+    az storage blob upload --account-name $storageAccountName --container-name resume --name myresume.json --file myresume.json 
+    ```
+7. In your `local.settings.json` add the Storage Account Connection String to the `AzureWebJobsStorage` value. You can get that value by running this command: 
+    ```sh
+    az storage account show-connection-string --name $storageAccountName --resource-group rg-serverlessresumeapi   
+    ```
+8. You can now run and debug (F5) your Function in your environment or run this command in the terminal: 
+    ```sh
+    cd src
+    func start host
+    ```
 
 ## Configure CI/CD with GitHub actions
 
-1. We'll need to get our Function's Publish Profile, run:
+1. We'll need to get our Function's Publish Profile, run the following command in the terminal and copy the output:
     ```sh
-    az functionapp deployment list-publishing-profiles --name {function-name} --resource-group rg-serverlessresumeapi --xml
+    az functionapp deployment list-publishing-profiles --name $functionAppName --resource-group rg-serverlessresumeapi --xml
     ```
-2. In your GitHub repo, create a secret named `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` with the contents of your publish profile.
+2. In your GitHub repo, go to settings > secrets and variables > actions > create a secret named `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` with the contents of your publish profile you just copied.
 3. Head to Actions tab on your Repo and manually run the workflow. 
-4. Once it's complete. Visit Azure, select resource groups. find rg-serverlessresumeapi, and click on the function app, then click on the url, add getresume to the end of it, your resume info will be displayed. 
+4. Once it's complete. Your resume api is now in production. We can view it in 3 ways:
+    - Using curl in the terminal: 
+        ```sh
+        curl $functionUri/getresume
+        ```
+    - Using the browser: open a new tab with your function URI and add `/api/getresume` at the end.
+    - Use the thunderclient extension in VS Code with your function URI and add `/api/getresume` at the end.
+        

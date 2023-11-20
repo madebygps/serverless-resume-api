@@ -13,7 +13,7 @@
 			"problemMatcher": "$msCompile",
 			"options": {
 				"cwd": "${workspaceFolder}/src/"
-			},
+			}
 		},
 		{
 			"label": "build (functions)",
@@ -32,7 +32,7 @@
 			"problemMatcher": "$msCompile",
 			"options": {
 				"cwd": "${workspaceFolder}/src/"
-			},
+			}
 		},
 		{
 			"label": "clean release (functions)",
@@ -71,7 +71,7 @@
 			"type": "func",
 			"dependsOn": "build (functions)",
 			"options": {
-				"cwd": "${workspaceFolder}/src/bin/Debug/net6.0"
+				"cwd": "${workspaceFolder}/src/bin/Debug/net8.0"
 			},
 			"command": "host start",
 			"isBackground": true,
