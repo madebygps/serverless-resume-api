@@ -70,7 +70,7 @@ resource functionApp 'Microsoft.Web/sites@2022-03-01' = {
     
     serverFarmId: hostingPlan.id
     siteConfig: {
-      linuxFxVersion: 'dotnet-isolated|6.0'
+      linuxFxVersion: 'dotnet-isolated|8.0'
       
               appSettings: [
         {

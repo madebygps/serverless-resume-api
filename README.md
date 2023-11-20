@@ -88,13 +88,14 @@ For local developer environment
 
 ## Configure CI/CD with GitHub actions
 
-1. We'll need to get our Function's Publish Profile, run the following command in the terminal and copy the output:
+1. In the .github folder, edit your `build.yml` and update the `AZURE_FUNCTIONAPP_NAME` value with the name of your function app.
+2. We'll need to get our Function's Publish Profile, run the following command in the terminal and copy the output:
     ```sh
     az functionapp deployment list-publishing-profiles --name $functionAppName --resource-group rg-serverlessresumeapi --xml
     ```
-2. In your GitHub repo, go to settings > secrets and variables > actions > create a secret named `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` with the contents of your publish profile you just copied.
-3. Head to Actions tab on your Repo and manually run the workflow. 
-4. Once it's complete. Your resume api is now in production. We can view it in 3 ways:
+3. In your GitHub repo, go to settings > secrets and variables > actions > create a secret named `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` with the contents of your publish profile you just copied.
+4. Head to Actions tab on your Repo and manually run the workflow. 
+5. Once it's complete. Your resume api is now in production. We can view it in 3 ways:
     - Using curl in the terminal: 
         ```sh
         curl $functionUri/getresume
