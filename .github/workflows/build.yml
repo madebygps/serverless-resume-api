@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+    paths:
+      - 'src/**'
 
 env:
   AZURE_FUNCTIONAPP_NAME: 'lykx7lblw42o6apifunc'

@@ -1,25 +1,7 @@
 {
-	"name": "Azure Functions .NET 8 API",
-	"image": "mcr.microsoft.com/dotnet/sdk:8.0",
-	"forwardPorts": [ 7071 ],
-
-	// Configure tool-specific properties.
-
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"ms-azuretools.vscode-azurefunctions",
-				"ms-dotnettools.vscode-dotnet-runtime",
-				"rangav.vscode-thunder-client",
-				"GitHub.copilot",
-				"ms-dotnettools.csdevkit",
-				"ms-azuretools.vscode-bicep",
-				"GitHub.vscode-github-actions",
-				 "ms-dotnetools.csharp"
-			]
-		}
-	},
-	  "features": {
+    "name": ".NET in Codespaces",
+    "image": "mcr.microsoft.com/dotnet/sdk:8.0",
+    "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {},
         "ghcr.io/devcontainers/features/github-cli:1": {
             "version": "2"
@@ -36,11 +18,36 @@
             "dotnetRuntimeVersions": "7.0",
             "aspNetCoreRuntimeVersions": "7.0"
         }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.vscode-node-azure-pack",
+                "GitHub.copilot",
+                "GitHub.vscode-github-actions",
+                "ms-dotnettools.vscode-dotnet-runtime",
+                "ms-dotnettools.csdevkit",
+                "ms-dotnetools.csharp"
+            ]
+        }
+    },
+    "forwardPorts": [
+        7071
+    ],
+    "postCreateCommand": "cd ./src && dotnet restore",
+    "hostRequirements": {
+        "memory": "8gb",
+        "cpus": 4
+    },
+    "remoteEnv": {
+        "DOTNET_MULTILEVEL_LOOKUP": "0",
+        "TARGET": "net8.0"
+    },
+    "portsAttributes": {
+        "7071": {
+            "label": "Resume API",
+            "onAutoForward": "notify"
+        }
+        
     }
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	//"postCreateCommand": "chmod +x src/setup.sh; src/setup.sh",
-
-	// Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	//"remoteUser": "vscode"
 }
