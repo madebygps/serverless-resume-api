@@ -1,6 +1,6 @@
 {
 	"name": "Azure Functions .NET 8 API",
-	"dockerFile": "Dockerfile",
+	"image": "mcr.microsoft.com/dotnet/sdk:8.0",
 	"forwardPorts": [ 7071 ],
 
 	// Configure tool-specific properties.
@@ -22,7 +22,7 @@
 	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "chmod +x src/setup.sh; src/setup.sh",
+	"postCreateCommand": "chmod +x src/setup.sh; src/setup.sh",
 
 	// Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
